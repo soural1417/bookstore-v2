@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Amplify from "@aws-amplify/core";
 import { DataStore, Predicates } from "@aws-amplify/datastore";
-import { Post, PostStatus } from "../models";
+import { Post, PostStatus, Blog, Comment } from "../models";
 
 //Use next two lines only if syncing with the cloud
 import awsconfig from "../aws-exports";

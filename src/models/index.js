@@ -13,7 +13,7 @@ const PostStatus = {
   "STAGED": "STAGED"
 };
 
-const { User, TeamMembership, Team, Task, Book, BookOrder, Order, Message, Post, SubTask } = initSchema(schema);
+const { User, TeamMembership, Team, Task, Book, BookOrder, Order, Message, Blog, Post, Comment, SubTask } = initSchema(schema);
 
 export {
   User,
@@ -24,7 +24,9 @@ export {
   BookOrder,
   Order,
   Message,
+  Blog,
   Post,
+  Comment,
   OrderStatus,
   PostStatus,
   SubTask

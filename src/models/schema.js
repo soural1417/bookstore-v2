@@ -677,6 +677,46 @@ export const schema = {
                 }
             ]
         },
+        "Blog": {
+            "name": "Blog",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "posts": {
+                    "name": "posts",
+                    "isArray": true,
+                    "type": {
+                        "model": "Post"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "blog"
+                    }
+                }
+            },
+            "syncable": true,
+            "pluralName": "Blogs",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                }
+            ]
+        },
         "Post": {
             "name": "Post",
             "fields": {
@@ -701,6 +741,32 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "blog": {
+                    "name": "blog",
+                    "isArray": false,
+                    "type": {
+                        "model": "Blog"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "postBlogId"
+                    }
+                },
+                "comments": {
+                    "name": "comments",
+                    "isArray": true,
+                    "type": {
+                        "model": "Comment"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "post"
+                    }
+                },
                 "status": {
                     "name": "status",
                     "isArray": false,
@@ -713,6 +779,46 @@ export const schema = {
             },
             "syncable": true,
             "pluralName": "Posts",
+            "attributes": [
+                {
+                    "type": "model",
+                    "properties": {}
+                }
+            ]
+        },
+        "Comment": {
+            "name": "Comment",
+            "fields": {
+                "id": {
+                    "name": "id",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": true,
+                    "attributes": []
+                },
+                "content": {
+                    "name": "content",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "post": {
+                    "name": "post",
+                    "isArray": false,
+                    "type": {
+                        "model": "Post"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "association": {
+                        "connectionType": "BELONGS_TO",
+                        "targetName": "commentPostId"
+                    }
+                }
+            },
+            "syncable": true,
+            "pluralName": "Comments",
             "attributes": [
                 {
                     "type": "model",
@@ -759,5 +865,5 @@ export const schema = {
             }
         }
     },
-    "version": "6365f8d78ddd64d830bd63b30b03acf4"
+    "version": "92adbba85b2bf47dc3ea352b1049dac1"
 };

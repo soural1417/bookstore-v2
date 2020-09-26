@@ -134,11 +134,22 @@ type Mutation {
     @function(name: "createOrder-${env}")
 }
 
-
 type Message @model {
   id: ID!
   user: String
   text: String
+} 
+
+type Blog @model {
+  id: ID!
+  name: String!
+  posts: [Post] @connection(name: "BlogPosts")
+}
+
+type Comment @model {
+  id: ID!
+  content: String
+  post: Post @connection(name: "PostComments")
 }
 
 enum PostStatus {
@@ -151,5 +162,7 @@ type Post @model {
   id: ID!
   title: String!
   rating: Int!
+  blog: Blog @connection(name: "BlogPosts")
+  comments: [Comment] @connection(name: "PostComments")
   status: PostStatus!
 }

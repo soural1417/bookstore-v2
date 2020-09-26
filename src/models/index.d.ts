@@ -94,11 +94,29 @@ export declare class Message {
   static copyOf(source: Message, mutator: (draft: MutableModel<Message>) => MutableModel<Message> | void): Message;
 }
 
+export declare class Blog {
+  readonly id: string;
+  readonly name: string;
+  readonly posts?: Post[];
+  constructor(init: ModelInit<Blog>);
+  static copyOf(source: Blog, mutator: (draft: MutableModel<Blog>) => MutableModel<Blog> | void): Blog;
+}
+
 export declare class Post {
   readonly id: string;
   readonly title: string;
   readonly rating: number;
+  readonly blog?: Blog;
+  readonly comments?: Comment[];
   readonly status: PostStatus | keyof typeof PostStatus;
   constructor(init: ModelInit<Post>);
   static copyOf(source: Post, mutator: (draft: MutableModel<Post>) => MutableModel<Post> | void): Post;
+}
+
+export declare class Comment {
+  readonly id: string;
+  readonly content?: string;
+  readonly post?: Post;
+  constructor(init: ModelInit<Comment>);
+  static copyOf(source: Comment, mutator: (draft: MutableModel<Comment>) => MutableModel<Comment> | void): Comment;
 }
