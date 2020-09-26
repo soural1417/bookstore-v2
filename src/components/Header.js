@@ -14,8 +14,12 @@ const Header = () => {
                         <Link to="/books">Books</Link>
                     </li>
                     <li>
+                        <Link to="/blog">Blog</Link>
+                    </li>
+                    <li>
                         <Link to="/cart">Cart</Link>
                     </li>
+                    
                     <li>
                         <Link to="/checkout">Checkout</Link>
                     </li>

@@ -6,6 +6,357 @@ export const processOrder = /* GraphQL */ `
     processOrder(input: $input)
   }
 `;
+export const createUser = /* GraphQL */ `
+  mutation CreateUser(
+    $input: CreateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    createUser(input: $input, condition: $condition) {
+      id
+      username
+      teams {
+        items {
+          id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const updateUser = /* GraphQL */ `
+  mutation UpdateUser(
+    $input: UpdateUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    updateUser(input: $input, condition: $condition) {
+      id
+      username
+      teams {
+        items {
+          id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const deleteUser = /* GraphQL */ `
+  mutation DeleteUser(
+    $input: DeleteUserInput!
+    $condition: ModelUserConditionInput
+  ) {
+    deleteUser(input: $input, condition: $condition) {
+      id
+      username
+      teams {
+        items {
+          id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+      owner
+    }
+  }
+`;
+export const createTeamMembership = /* GraphQL */ `
+  mutation CreateTeamMembership(
+    $input: CreateTeamMembershipInput!
+    $condition: ModelTeamMembershipConditionInput
+  ) {
+    createTeamMembership(input: $input, condition: $condition) {
+      id
+      team {
+        id
+        name
+        members {
+          nextToken
+          startedAt
+        }
+        tasks {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      member {
+        id
+        username
+        teams {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTeamMembership = /* GraphQL */ `
+  mutation UpdateTeamMembership(
+    $input: UpdateTeamMembershipInput!
+    $condition: ModelTeamMembershipConditionInput
+  ) {
+    updateTeamMembership(input: $input, condition: $condition) {
+      id
+      team {
+        id
+        name
+        members {
+          nextToken
+          startedAt
+        }
+        tasks {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      member {
+        id
+        username
+        teams {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTeamMembership = /* GraphQL */ `
+  mutation DeleteTeamMembership(
+    $input: DeleteTeamMembershipInput!
+    $condition: ModelTeamMembershipConditionInput
+  ) {
+    deleteTeamMembership(input: $input, condition: $condition) {
+      id
+      team {
+        id
+        name
+        members {
+          nextToken
+          startedAt
+        }
+        tasks {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      member {
+        id
+        username
+        teams {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+        owner
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createTeam = /* GraphQL */ `
+  mutation CreateTeam(
+    $input: CreateTeamInput!
+    $condition: ModelTeamConditionInput
+  ) {
+    createTeam(input: $input, condition: $condition) {
+      id
+      name
+      members {
+        items {
+          id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      tasks {
+        items {
+          id
+          title
+          editors
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateTeam = /* GraphQL */ `
+  mutation UpdateTeam(
+    $input: UpdateTeamInput!
+    $condition: ModelTeamConditionInput
+  ) {
+    updateTeam(input: $input, condition: $condition) {
+      id
+      name
+      members {
+        items {
+          id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      tasks {
+        items {
+          id
+          title
+          editors
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteTeam = /* GraphQL */ `
+  mutation DeleteTeam(
+    $input: DeleteTeamInput!
+    $condition: ModelTeamConditionInput
+  ) {
+    deleteTeam(input: $input, condition: $condition) {
+      id
+      name
+      members {
+        items {
+          id
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      tasks {
+        items {
+          id
+          title
+          editors
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
 export const createTask = /* GraphQL */ `
   mutation CreateTask(
     $input: CreateTaskInput!
@@ -14,8 +365,31 @@ export const createTask = /* GraphQL */ `
     createTask(input: $input, condition: $condition) {
       id
       title
-      description
-      status
+      team {
+        id
+        name
+        members {
+          nextToken
+          startedAt
+        }
+        tasks {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      editors
+      subtasks {
+        content
+        due
+      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -29,8 +403,31 @@ export const updateTask = /* GraphQL */ `
     updateTask(input: $input, condition: $condition) {
       id
       title
-      description
-      status
+      team {
+        id
+        name
+        members {
+          nextToken
+          startedAt
+        }
+        tasks {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      editors
+      subtasks {
+        content
+        due
+      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -44,52 +441,33 @@ export const deleteTask = /* GraphQL */ `
     deleteTask(input: $input, condition: $condition) {
       id
       title
-      description
-      status
+      team {
+        id
+        name
+        members {
+          nextToken
+          startedAt
+        }
+        tasks {
+          nextToken
+          startedAt
+        }
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      editors
+      subtasks {
+        content
+        due
+      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
-    }
-  }
-`;
-export const createPrivateNote = /* GraphQL */ `
-  mutation CreatePrivateNote(
-    $input: CreatePrivateNoteInput!
-    $condition: ModelPrivateNoteConditionInput
-  ) {
-    createPrivateNote(input: $input, condition: $condition) {
-      id
-      content
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const updatePrivateNote = /* GraphQL */ `
-  mutation UpdatePrivateNote(
-    $input: UpdatePrivateNoteInput!
-    $condition: ModelPrivateNoteConditionInput
-  ) {
-    updatePrivateNote(input: $input, condition: $condition) {
-      id
-      content
-      createdAt
-      updatedAt
-      owner
-    }
-  }
-`;
-export const deletePrivateNote = /* GraphQL */ `
-  mutation DeletePrivateNote(
-    $input: DeletePrivateNoteInput!
-    $condition: ModelPrivateNoteConditionInput
-  ) {
-    deletePrivateNote(input: $input, condition: $condition) {
-      id
-      content
-      createdAt
-      updatedAt
-      owner
     }
   }
 `;
@@ -111,11 +489,18 @@ export const createBook = /* GraphQL */ `
           id
           book_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -139,11 +524,18 @@ export const updateBook = /* GraphQL */ `
           id
           book_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -167,11 +559,18 @@ export const deleteBook = /* GraphQL */ `
           id
           book_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -193,10 +592,17 @@ export const createBookOrder = /* GraphQL */ `
         total
         books {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
       book {
@@ -209,7 +615,11 @@ export const createBookOrder = /* GraphQL */ `
         price
         orders {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -232,10 +642,17 @@ export const updateBookOrder = /* GraphQL */ `
         total
         books {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
       book {
@@ -248,7 +665,11 @@ export const updateBookOrder = /* GraphQL */ `
         price
         orders {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -271,10 +692,17 @@ export const deleteBookOrder = /* GraphQL */ `
         total
         books {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
       book {
@@ -287,7 +715,11 @@ export const deleteBookOrder = /* GraphQL */ `
         price
         orders {
           nextToken
+          startedAt
         }
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -309,11 +741,18 @@ export const createOrder = /* GraphQL */ `
           id
           book_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -334,11 +773,18 @@ export const updateOrder = /* GraphQL */ `
           id
           book_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -359,11 +805,123 @@ export const deleteOrder = /* GraphQL */ `
           id
           book_id
           order_id
+          _version
+          _deleted
+          _lastChangedAt
           createdAt
           updatedAt
         }
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createMessage = /* GraphQL */ `
+  mutation CreateMessage(
+    $input: CreateMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    createMessage(input: $input, condition: $condition) {
+      id
+      user
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateMessage = /* GraphQL */ `
+  mutation UpdateMessage(
+    $input: UpdateMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    updateMessage(input: $input, condition: $condition) {
+      id
+      user
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteMessage = /* GraphQL */ `
+  mutation DeleteMessage(
+    $input: DeleteMessageInput!
+    $condition: ModelMessageConditionInput
+  ) {
+    deleteMessage(input: $input, condition: $condition) {
+      id
+      user
+      text
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createPost = /* GraphQL */ `
+  mutation CreatePost(
+    $input: CreatePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    createPost(input: $input, condition: $condition) {
+      id
+      title
+      rating
+      status
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updatePost = /* GraphQL */ `
+  mutation UpdatePost(
+    $input: UpdatePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    updatePost(input: $input, condition: $condition) {
+      id
+      title
+      rating
+      status
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deletePost = /* GraphQL */ `
+  mutation DeletePost(
+    $input: DeletePostInput!
+    $condition: ModelPostConditionInput
+  ) {
+    deletePost(input: $input, condition: $condition) {
+      id
+      title
+      rating
+      status
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }

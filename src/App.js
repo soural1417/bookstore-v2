@@ -11,6 +11,7 @@ import Cart from "./pages/Cart";
 import Checkout from "./pages/Checkout";
 import BookDetails from "./pages/BookDetails";
 import Admin from './pages/Admin';
+import BlogApp from './pages/Blog';
 
 // Components
 import Header from "./components/Header"
@@ -31,11 +32,15 @@ const App = () => {
         <Route path="/cart">
           <Cart />
         </Route>
+    
         <Route path="/checkout">
           <Checkout />
         </Route>
         <Route exact path="/books">
           <Books />
+        </Route>
+        <Route exact path="/blog">
+          <BlogApp />
         </Route>
         <Route
           path="/books/:id"

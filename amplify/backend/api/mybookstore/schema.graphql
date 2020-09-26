@@ -1,19 +1,52 @@
-type Task
-  @model
-  @auth(
-    rules: [
-      { allow: groups, groups: ["Managers"], queries: null, mutations: [create, update, delete] }
-      { allow: groups, groups: ["Employees"], queries: [get, list], mutations: null }
-    ]
-  ) {
+type User @model @auth(rules: [{allow: owner}, {allow: groups, groups: ["UserAdmin"]}]) {
   id: ID!
-  title: String!
-  description: String
-  status: String
+  username: String!
+  teams: [TeamMembership] @connection(name: "UserTeams")
 }
-type PrivateNote @model @auth(rules: [{ allow: owner }]) {
+
+# Create a join model to facilitate the many-to-many relationship.
+# Only "TeamMembershipAdmin" members can create, update, and delete membership
+# objects that add users to teams.
+type TeamMembership @model(queries: null) @auth(rules: [{ allow: groups, groups: ["TeamMembershipAdmin"]}]) {
   id: ID!
-  content: String!
+  team: Team! @connection(name: "TeamMembership")
+  member: User! @connection(name: "UserTeams")
+}
+
+# Only "Admin" members can create, update, and delete teams themselves.
+type Team @model(queries: null) @auth(rules: [{ allow: groups, groups: ["Admin"], queries: null }]) {
+  id: ID!
+  name: String!
+  members: [TeamMembership] @connection(name: "TeamMembership")
+  tasks: [Task] @connection(name: "TeamTasks")
+}
+
+# Non @model types are stored inline as maps and lists in other @model types.
+type SubTask {
+    content: String!
+    due: String!
+}
+
+# There is currently no way to specify that only members of a team may create
+# items but you can get very close with a combo of group and owner auth.
+# I am passing queries null so no top level task queries are generated and
+# users must instead read them via User.teams.team.tasks
+type Task @model(queries: null) @auth(
+    rules: [
+        { allow: groups, groups: ["TaskAdmin"], mutations: [create]},
+        { allow: owner, ownerField: "editors", mutations: [update, delete] }
+    ]
+) {
+    id: ID!
+    title: String!
+    team: Team @connection(name: "TeamTasks")
+    
+    # Only "TaskAdmins" can create users but any user who's username is
+    # in this list will be able to update, delete, get, and list tasks.
+    editors: [String]
+
+    # Note: This is not a @connection because the non @model type will be inlined
+    subtasks: [SubTask]
 }
 
 type Book
@@ -99,4 +132,24 @@ type Mutation {
   processOrder(input: ProcessOrderInput!): OrderStatus
     @function(name: "processPayment-${env}")
     @function(name: "createOrder-${env}")
+}
+
+
+type Message @model {
+  id: ID!
+  user: String
+  text: String
+}
+
+enum PostStatus {
+  ACTIVE
+  INACTIVE
+  STAGED # new enum value
+}
+
+type Post @model {
+  id: ID!
+  title: String!
+  rating: Int!
+  status: PostStatus!
 }
